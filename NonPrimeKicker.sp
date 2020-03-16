@@ -41,6 +41,6 @@ public Action EventPlayerTeam(Event event,
             PrintToServer("unable to verify client");
             }
         }
-        return Plugin_Handled;
     }
+            return Plugin_Handled;
 }
