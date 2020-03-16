@@ -38,7 +38,9 @@ public Action EventPlayerTeam(Event event,
                 KickClient(client, "You need a Prime CS:GO account to play on this server, If you think this message is an error contact ADMIN");
                 return;
             } else {
+            PrintToServer("unable to verify client");
             }
         }
+        return Plugin_Handled;
     }
 }
