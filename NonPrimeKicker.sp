@@ -20,27 +20,23 @@ public void OnPluginStart()
     HookEvent("player_team", EventPlayerTeam);
 }
 
-public Action EventPlayerTeam(Event event,
-    const char[] name, bool dontBroadcast) {
-    for (new i = 1; i <= MaxClients; i++) {
-        if (IsClientInGame(i)) {
-            int client = i;
-            int playerlevel = GetEntProp(GetPlayerResourceEntity(), Prop_Send, "m_nPersonaDataPublicLevel", _, client);
+public Action EventPlayerTeam(Event event,const char[] name, bool dontBroadcast) {
 
-            if (CheckCommandAccess(client, "BypassPremiumCheck", ADMFLAG_RESERVATION, true)) {
-                PrintToServer("Here is client id %d and level---------=====>>>>>%d", client, playerlevel);
-                PrintToServer(" Reserverd client");
-            } else if (playerlevel > 2) {
-                PrintToServer("Here is client id %d and level---------=====>>>>>%d", client, playerlevel);
-                PrintToServer("Level qualified client");
-            } else if (k_EUserHasLicenseResultDoesNotHaveLicense == SteamWorks_HasLicenseForApp(client, 624820)) {
-                PrintToServer("Non Prime Client kicked");
-                KickClient(client, "You need a Prime CS:GO account to play on this server, If you think this message is an error contact ADMIN");
-                return;
-            } else {
-            PrintToServer("unable to verify client");
-            }
-        }
+    new client = GetClientOfUserId(GetEventInt(event, "userid"));
+    int playerlevel = GetEntProp(GetPlayerResourceEntity(), Prop_Send, "m_nPersonaDataPublicLevel", _, client);
+
+    if (CheckCommandAccess(client, "BypassPremiumCheck", ADMFLAG_RESERVATION, true)) {
+        PrintToServer("Here is client id %d and level---------=====>>>>>%d", client, playerlevel);
+        PrintToServer(" Reserverd client");
+    } else if (playerlevel > 2) {
+        PrintToServer("Here is client id %d and level---------=====>>>>>%d", client, playerlevel);
+        PrintToServer("Level qualified client");
+    } else if (k_EUserHasLicenseResultDoesNotHaveLicense == SteamWorks_HasLicenseForApp(client, 624820)) {
+        PrintToServer("Non Prime Client kicked");
+        KickClient(client, "You need a Prime CS:GO account to play on this server, If you think this message is an error contact ADMIN");
+        return;
+    } else {
+        PrintToServer("Unable to verify client no action taken");
     }
-            return Plugin_Handled;
+
 }
