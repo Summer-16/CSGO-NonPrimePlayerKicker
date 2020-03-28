@@ -1,5 +1,5 @@
 # NonPrimePlayerKicker
-A plugin to kick Non Prime players who has CSGO level below 2. 
+A plugin to kick Non Prime players who has CSGO level below 3. 
 Steamworks is required if you want to recompile it
 
 version - 1.2
