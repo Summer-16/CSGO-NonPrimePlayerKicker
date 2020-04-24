@@ -22,10 +22,11 @@
 #include <sdkhooks>
 #include <cstrike>
 
-#define PLUGIN_VERSION "1.2"
+#define PLUGIN_VERSION "1.3"
 
 ConVar g_cKickLevel;
 ConVar g_cKickMsg;
+ConVar g_cTagEnabled;
 ConVar g_cTag;
 
 public Plugin myinfo = {
@@ -40,7 +41,8 @@ public Plugin myinfo = {
 public void OnPluginStart()
 {
     g_cKickLevel = CreateConVar("sm_npmk_kicklevel", "2", "Define Minimum level for non primes to allow join in",0,true,1.0,true,40.0);
-    g_cKickMsg = CreateConVar("sm_npmk_msg", "You need a Prime CS:GO account to play on this server, If you think this message is an error contact ADMIN", "Message to print when non prime's kicked");
+    g_cKickMsg = CreateConVar("sm_npmk_msg", "You Need a Licenced CSGO account to play on this server, Players with free account need to have CSGO level 3 (Private Rank 3) or higher. If you think this message is an error contact ADMIN", "Message to print when non prime's kicked");
+    g_cTagEnabled = CreateConVar("sm_npmk_tag_enabled", "1", "Should plugin set the tag for non-prime players or not");
     g_cTag = CreateConVar("sm_npmk_tag", "[Non-Prime]", "Tag for non prime who are allowed in the server");
 
     // Execute the config file, create if not present
@@ -53,6 +55,7 @@ public void OnPluginStart()
 public Action EventPlayerTeam(Event event,const char[] name, bool dontBroadcast) {
 
     int minimumLevel = g_cKickLevel.IntValue;
+    int tagEnabled = g_cTagEnabled.IntValue;
     char message[512];
     char tag[128];
     g_cKickMsg.GetString(message, 512);
@@ -63,17 +66,16 @@ public Action EventPlayerTeam(Event event,const char[] name, bool dontBroadcast)
     int playerlevel = GetEntProp(GetPlayerResourceEntity(), Prop_Send, "m_nPersonaDataPublicLevel", _, client);
 
     if (CheckCommandAccess(client, "BypassPremiumCheck", ADMFLAG_RESERVATION, true)) {
-        PrintToServer("Here is client id %d and level=====>>>>>%d", client, playerlevel);
         PrintToServer("Reserverd/Admin client");
     } else if (playerlevel > minimumLevel) {
         PrintToServer("Here is client id %d and level=====>>>>>%d", client, playerlevel);
         PrintToServer("Level qualified client");
         if(k_EUserHasLicenseResultDoesNotHaveLicense == SteamWorks_HasLicenseForApp(client, 624820)){
-            PrintToServer("Eligible Non Prime Setting tag");
+            if(tagEnabled){
             CS_SetClientClanTag(client, tag);
+            }
         }
     } else if (k_EUserHasLicenseResultDoesNotHaveLicense == SteamWorks_HasLicenseForApp(client, 624820)) {
-        PrintToServer("Non Prime Client kicked");
         KickClient(client, message);
     } else {
         PrintToServer("Unable to verify client no action taken");
