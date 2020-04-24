@@ -68,8 +68,6 @@ public Action EventPlayerTeam(Event event,const char[] name, bool dontBroadcast)
     if (CheckCommandAccess(client, "BypassPremiumCheck", ADMFLAG_RESERVATION, true)) {
         PrintToServer("Reserverd/Admin client");
     } else if (playerlevel > minimumLevel) {
-        PrintToServer("Here is client id %d and level=====>>>>>%d", client, playerlevel);
-        PrintToServer("Level qualified client");
         if(k_EUserHasLicenseResultDoesNotHaveLicense == SteamWorks_HasLicenseForApp(client, 624820)){
             if(tagEnabled){
             CS_SetClientClanTag(client, tag);
