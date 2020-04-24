@@ -2,6 +2,9 @@
 A plugin to kick Non Prime players who has CSGO level below 3. 
 Steamworks is required if you want to recompile it
 
+version - 1.3
+- Config Update - Added option for Tag enable/disable 
+
 version - 1.2
 - Added config file for minimun level define, message define and tag define
 
