@@ -1,4 +1,5 @@
 # NonPrimePlayerKicker
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/Shivam169)  
 A plugin to kick Non Prime players who has CSGO level below 3. 
 Steamworks is required if you want to recompile it
 
