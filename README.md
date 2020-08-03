@@ -1,7 +1,7 @@
 # NonPrimePlayerKicker
 [![Donate](https://cdn2.iconfinder.com/data/icons/social-icons-circular-color/512/paypal-64.png)](https://www.paypal.me/Shivam169)  [![Donate](https://cdn2.iconfinder.com/data/icons/social-icons-circular-color/512/paytm-64.png)](https://drive.google.com/file/d/1ks_B3s9dNk_RPkDVf1DL1ITKe0mnrTRk/view)  [![Donate](https://cdn.iconscout.com/icon/free/png-64/upi-bhim-transfer-1795405-1522773.png)](https://drive.google.com/open?id=1VYYThJS78Pp6yyIU0lCIC4j7ef5a4G0l)  [![Discord](https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/91_Discord-64.png)](https://discord.gg/HcCFa8q)  
 
-## Note: THis plugin checks for CSGO licence (that is whether player has bought the game or not)
+## Note: This plugin checks for CSGO licence, not the prime status (that is whether player has bought the game or not)
 Here is what this plugin does
 - It checks if the player has bought csgo or not 
 - Player will be allowed in server directly in three cases (if player has bought the csgo, if player is an admin and if player has the bypass flag)
