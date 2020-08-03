@@ -10,8 +10,9 @@ Here is what this plugin does
 ***[SteamWorks](https://forums.alliedmods.net/showthread.php?t=229556) is required if you want to recompile it.***
 
 ## Cvars
-- `sm_npmk_hourlevel_enabled "1"` - Used to Enable/Disable minimun csgo hours check for non licenced user
-- `sm_npmk_kicklevel "200"` - "Minimum amount of playtime a user has to have on CS:GO (Default: 200)");
+- `sm_npmk_level_enabled "1"` - 0-> Disable, 1->plugin check for minimun csgo hours for non licenced user, 2-> plugin check for minimun csgo level for non licenced user
+- `sm_npmk_kicklevel "200"` - Minimum amount of playtime a user has to have on CS:GO (Default: 200) (for sm_npmk_level_enabled 1)
+- `sm_npmk_kicklevel "2"` - Define Minimum level for non primes to allow join in (for sm_npmk_level_enabled 2)
 - `sm_npmk_msg "You need a CSGO licensed account to play on this server. Free account players must have CSGO Level 2 or higher. If you think this message is an error, please contact us"` - Message to print when non prime's kicked;
 - `sm_npmk_tag "[Non-Prime]"` - Tag for non prime who are allowed in the server;
 - `sm_npmk_tag_enabled "1"` - Should plugin set the tag for non-prime players or not;
